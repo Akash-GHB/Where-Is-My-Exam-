@@ -1,0 +1,39 @@
+version: '3.8'
+
+services:
+  db:
+    image: mysql:8.0
+    container_name: whereismyexam_db
+    environment:
+      MYSQL_DATABASE: where_is_my_exam
+      MYSQL_ROOT_PASSWORD: root
+    ports:
+      - "3306:3306"
+    volumes:
+      - db_data:/var/lib/mysql
+
+  backend:
+    build: ./where-is-my-exam
+    container_name: whereismyexam_backend
+    ports:
+      - "8080:8080"
+    environment:
+      - DB_HOST=db
+      - DB_NAME=where_is_my_exam
+      - DB_USERNAME=root
+      - DB_PASSWORD=root
+      - SPRING_PROFILES_ACTIVE=prod
+      # Email and JWT defaults will be picked up from application.properties
+    depends_on:
+      - db
+
+  frontend:
+    build: ./exam-finder-frontend
+    container_name: whereismyexam_frontend
+    ports:
+      - "80:80"
+    depends_on:
+      - backend
+
+volumes:
+  db_data:

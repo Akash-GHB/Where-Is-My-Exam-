@@ -1,0 +1,4 @@
+﻿no,program,branch,course_code,course_name,from,to,strength,room_no,block,floor,exam_date,session
+1,B.E,CSE,SCSB4001,5G Networks,431110001,431110025,25,17,14,Ground Floor,2025-12-09,FN
+2,B.E,CSE,SCSB4001,5G Networks,431110026,431110050,25,18,14,Ground Floor,2025-12-09,FN
+3,B.E,IT,ITSB3002,OS Basics,431120001,431120020,20,21,12,First Floor,2025-12-10,FN
